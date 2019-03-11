@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Route
+metadata:
+  name: centos-httpd-route
+spec:
+  to:
+    kind: Service
+    name: centos-httpd
+

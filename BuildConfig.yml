@@ -1,0 +1,24 @@
+kind: "BuildConfig"
+apiVersion: "v1"
+metadata:
+  name: "centos-httpd-build" 
+spec:
+  runPolicy: "Serial" 
+  source: 
+    git:
+      uri: "https://github.com/sky-joker/openshift-example-httpd"
+    type: Git
+  strategy: 
+    dockerStrategy:
+      from:
+        kind: "ImageStreamTag"
+        name: "centos:7.6.1810"
+    type: Docker
+  output: 
+    to:
+      kind: "ImageStreamTag"
+      name: "centos-httpd:latest"
+  triggers:
+  - imageChange: {}
+    type: ImageChange
+
